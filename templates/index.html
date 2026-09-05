@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | Email Security SOC</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                🛡️
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    PhishGuard
+                </div>
+
+                <div class="brand-subtitle">
+                    Email Security SOC
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-section-title">
+            SECURITY CENTER
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#scanner" class="nav-item">
+                <span class="nav-icon">🔍</span>
+                <span>Email Scanner</span>
+            </a>
+
+            <a href="#url-analysis" class="nav-item">
+                <span class="nav-icon">🔗</span>
+                <span>URL Analysis</span>
+            </a>
+
+            <a href="#threat-analysis" class="nav-item">
+                <span class="nav-icon">🧠</span>
+                <span>Threat Analytics</span>
+            </a>
+
+            <a href="#reports" class="nav-item">
+                <span class="nav-icon">📄</span>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="system-status-card">
+
+                <div class="system-status-row">
+
+                    <div class="online-status">
+                        <span class="status-dot"></span>
+                        SYSTEM ONLINE
+                    </div>
+
+                    <span class="version">
+                        v1.0
+                    </span>
+
+                </div>
+
+                <div class="system-description">
+                    ML Engine • URL Engine • Threat Engine
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+
+                <div class="page-title">
+                    Security Operations Dashboard
+                </div>
+
+                <div class="page-subtitle">
+                    AI-assisted phishing email detection and threat analysis
+                </div>
+
+            </div>
+
+
+            <div class="engine-status">
+
+                <span class="status-dot"></span>
+
+                Detection Engine Active
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             SCANNER SECTION
+        ================================================== -->
+
+        <section class="scanner-layout" id="scanner">
+
+            <!-- EMAIL INPUT -->
+
+            <div class="panel scanner-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>📧 Email Security Scanner</h2>
+                        <p>Analyze suspicious email content</p>
+                    </div>
+
+                    <span class="panel-tag">
+                        REAL-TIME
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="emailText"
+                    class="email-input"
+                    placeholder="Paste the complete email content here...
+
+Example:
+URGENT! Your account has been suspended.
+Please verify your password immediately.
+https://example.com/verify"></textarea>
+
+
+                <div class="scanner-actions">
+
+                    <button
+                        id="analyzeBtn"
+                        class="primary-button"
+                        onclick="analyzeEmail()">
+
+                        <span>🔍</span>
+                        Analyze Email
+
+                    </button>
+
+
+                    <button
+                        class="secondary-button"
+                        onclick="clearScanner()">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="loading"
+                    class="loading-message">
+
+                    <span class="loading-spinner"></span>
+
+                    Running ML, URL and threat analysis...
+
+                </div>
+
+
+                <div
+                    id="error"
+                    class="error-message">
+                </div>
+
+            </div>
+
+
+            <!-- DETECTION PIPELINE -->
+
+            <div class="panel pipeline-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>⚡ Detection Pipeline</h2>
+                        <p>Multi-layer analysis engine</p>
+                    </div>
+
+                    <span class="panel-tag">
+                        3 LAYERS
+                    </span>
+
+                </div>
+
+
+                <div class="pipeline-item">
+
+                    <div class="pipeline-icon">
+                        🤖
+                    </div>
+
+                    <div class="pipeline-content">
+
+                        <div class="pipeline-name">
+                            Machine Learning
+                        </div>
+
+                        <div class="pipeline-description">
+                            TF-IDF + Logistic Regression
+                        </div>
+
+                    </div>
+
+                    <span class="active-badge">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="pipeline-item">
+
+                    <div class="pipeline-icon">
+                        🔗
+                    </div>
+
+                    <div class="pipeline-content">
+
+                        <div class="pipeline-name">
+                            URL Intelligence
+                        </div>
+
+                        <div class="pipeline-description">
+                            Suspicious link analysis
+                        </div>
+
+                    </div>
+
+                    <span class="active-badge">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="pipeline-item">
+
+                    <div class="pipeline-icon">
+                        🧠
+                    </div>
+
+                    <div class="pipeline-content">
+
+                        <div class="pipeline-name">
+                            Threat Indicators
+                        </div>
+
+                        <div class="pipeline-description">
+                            Social engineering detection
+                        </div>
+
+                    </div>
+
+                    <span class="active-badge">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULTS
+        ================================================== -->
+
+        <section
+            id="result"
+            class="results-section">
+
+
+            <!-- RESULT HERO -->
+
+            <div class="result-hero">
+
+                <!-- GAUGE -->
+
+                <div
+                    id="scorePanel"
+                    class="panel risk-card">
+
+                    <div class="result-label">
+                        THREAT ASSESSMENT
+                    </div>
+
+
+                    <div class="risk-gauge">
+
+                        <div
+                            id="gauge"
+                            class="gauge">
+
+                            <div class="gauge-center">
+
+                                <div
+                                    id="gaugeScore"
+                                    class="gauge-score">
+
+                                    0%
+
+                                </div>
+
+                                <div class="gauge-caption">
+                                    RISK SCORE
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESULT DETAILS -->
+
+                <div class="panel result-details">
+
+                    <div class="result-kicker">
+                        FINAL THREAT ASSESSMENT
+                    </div>
+
+
+                    <div
+                        id="finalResult"
+                        class="final-result">
+
+                        ---
+
+                    </div>
+
+
+                    <p class="result-description">
+
+                        Combined assessment based on machine
+                        learning, URL intelligence and threat
+                        indicators.
+
+                    </p>
+
+
+                    <div
+                        id="riskLevel"
+                        class="risk-badge">
+
+                        ---
+
+                    </div>
+
+
+                    <div class="mini-stat-grid">
+
+                        <div class="mini-stat">
+
+                            <span>
+                                FINAL SCORE
+                            </span>
+
+                            <strong id="finalScore">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mini-stat">
+
+                            <span>
+                                SCAN TIME
+                            </span>
+
+                            <strong id="scanTimeShort">
+                                ---
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mini-stat">
+
+                            <span>
+                                INDICATORS
+                            </span>
+
+                            <strong id="indicatorCountShort">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ANALYSIS CARDS
+            ================================================== -->
+
+            <div class="analysis-grid">
+
+
+                <!-- ML CARD -->
+
+                <div class="panel analysis-card">
+
+                    <div class="analysis-card-header">
+
+                        <div class="analysis-icon">
+                            🤖
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Machine Learning
+                            </h3>
+
+                            <p>
+                                Text classification
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Phishing Probability
+                        </span>
+
+                        <strong id="mlPhishing">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            id="mlBar"
+                            class="progress-fill phishing-fill">
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Safe Probability
+                        </span>
+
+                        <strong id="mlSafe">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            id="safeBar"
+                            class="progress-fill safe-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- URL CARD -->
+
+                <div
+                    id="url-analysis"
+                    class="panel analysis-card">
+
+                    <div class="analysis-card-header">
+
+                        <div class="analysis-icon">
+                            🔗
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                URL Security
+                            </h3>
+
+                            <p>
+                                Link intelligence
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            URLs Found
+                        </span>
+
+                        <strong id="urlCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            IP URLs
+                        </span>
+
+                        <strong id="ipUrls">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            HTTP URLs
+                        </span>
+
+                        <strong id="httpUrls">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            HTTPS URLs
+                        </span>
+
+                        <strong id="httpsUrls">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            URL Risk
+                        </span>
+
+                        <strong id="urlRisk">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            id="urlBar"
+                            class="progress-fill phishing-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- THREAT CARD -->
+
+                <div
+                    id="threat-analysis"
+                    class="panel analysis-card">
+
+                    <div class="analysis-card-header">
+
+                        <div class="analysis-icon">
+                            🧠
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Threat Analysis
+                            </h3>
+
+                            <p>
+                                Social engineering
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Urgency
+                        </span>
+
+                        <strong id="urgency">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Credentials
+                        </span>
+
+                        <strong id="credentials">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Financial
+                        </span>
+
+                        <strong id="financial">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Threats
+                        </span>
+
+                        <strong id="threats">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <span>
+                            Threat Score
+                        </span>
+
+                        <strong id="threatScore">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            id="threatBar"
+                            class="progress-fill phishing-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 INDICATORS + URLS
+            ================================================== -->
+
+            <div class="lower-grid">
+
+
+                <!-- INDICATORS -->
+
+                <div class="panel information-panel">
+
+                    <div class="panel-header compact">
+
+                        <div>
+                            <h2>🚨 Risk Indicators</h2>
+                        </div>
+
+                        <span
+                            id="indicatorCount"
+                            class="panel-count">
+
+                            0 DETECTED
+
+                        </span>
+
+                    </div>
+
+
+                    <div id="indicatorList"></div>
+
+                </div>
+
+
+                <!-- DETECTED URLS -->
+
+                <div class="panel information-panel">
+
+                    <div class="panel-header compact">
+
+                        <div>
+                            <h2>🔗 Detected URLs</h2>
+                        </div>
+
+                        <span
+                            id="urlCountLabel"
+                            class="panel-count">
+
+                            0 FOUND
+
+                        </span>
+
+                    </div>
+
+
+                    <div id="urlList"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SCAN STATISTICS
+            ================================================== -->
+
+            <div class="panel statistics-panel">
+
+                <div class="panel-header compact">
+
+                    <div>
+                        <h2>📊 Scan Statistics</h2>
+
+                        <p>
+                            Analysis metadata
+                        </p>
+                    </div>
+
+                    <span class="panel-tag">
+                        SESSION DATA
+                    </span>
+
+                </div>
+
+
+                <div class="statistics-grid">
+
+                    <div class="stat-box">
+
+                        <span>
+                            SCAN TIME
+                        </span>
+
+                        <strong id="scanTime">
+                            ---
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span>
+                            WORD COUNT
+                        </span>
+
+                        <strong id="wordCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span>
+                            CHARACTERS
+                        </span>
+
+                        <strong id="characterCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-box">
+
+                        <span>
+                            RISK INDICATORS
+                        </span>
+
+                        <strong id="indicatorCountBottom">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RECOMMENDATION + REPORT
+            ================================================== -->
+
+            <div
+                id="reports"
+                class="panel recommendation-panel">
+
+                <div class="recommendation-header">
+
+                    <div class="recommendation-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Security Recommendation
+                        </h2>
+
+                        <p id="recommendationText">
+                            Security recommendation will
+                            appear after analysis.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="download-button"
+                    onclick="downloadReport()">
+
+                    📄 Download Security Report
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                PhishGuard Security Operations Center
+            </span>
+
+            <span>
+                ML • URL Intelligence • Threat Detection
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='js/app.js') }}">
+</script>
+
+</body>
+</html>
