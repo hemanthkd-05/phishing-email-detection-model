@@ -151,13 +151,8 @@ Run:
 
 python -m pip install -r requirements.txt
 
-### Step 3: Train the Model
 
-Run:
-
-python train_model.py
-
-### Step 4: Start the Flask Application
+### Step 3: Start the Flask Application
 
 Run:
 
@@ -167,13 +162,13 @@ The application will start at:
 
 http://127.0.0.1:5000
 
-### Step 5: Open the Web Application
+### Step 4: Open the Web Application
 
 Open a browser and visit:
 
 http://127.0.0.1:5000
 
-### Step 6: Analyze an Email
+### Step 5: Analyze an Email
 
 Enter an email message into the Email Scanner and click **Analyze Email**.
 
